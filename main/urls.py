@@ -5,8 +5,8 @@ from django.urls import path
 urlpatterns = [
 
     path('viezdnoy-kokteilniy-bar', views.index),
-    path('viezdnoi-kofe-bar', views.coffePage),
-    path('viezdnoi-bar-goryachie-napitki', views.hotDrinks),
+    path('viezdnoi-kofe-bar', views.index),
+    path('viezdnoi-bar-goryachie-napitki', views.index),
     path('viezdnoi-bar-bezalkogolnie-napitki', views.index),
     path('streetfood-catering', views.index),
     path('grill-and-bbq', views.index),

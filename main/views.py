@@ -1,27 +1,21 @@
 from django.shortcuts import render, HttpResponse
 
-# Create your views here.
-from main import models
-from main.models import Product, ProductType
+from main.models import Product, ProductType, Page
 
 
 def index(request):
-    a = Product.objects.all()
-    print(a)
-    return HttpResponse(a[0].productvariant_set.all())
-    # return render(request, template_name="main.html")
+    url = request.path[1:]
+    page = Page.objects.filter(slug=url).first()
+    resp = None
+    if page:
+        types = page.product_type_set()
+        resp = get_page(request, page.slug, types)
+    return resp if resp else HttpResponse("error" + url)
 
 
-def coffePage(request):
-    type_names = [
-        ''
-    ]
-    types = ProductType.objects.filter(name__in=type_names)
-
-
+# принимает название header, типы товаров, включающих в себя товары
+# возвращает отрендеренную страницу
 def get_page(request, header, types):
-    return None
+    # header + main + footer
 
-
-def hotDrinks(request):
-    return None
+    return HttpResponse(str([str(i) for i in types]))
