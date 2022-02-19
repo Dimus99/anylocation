@@ -3,6 +3,10 @@ from django.shortcuts import render, HttpResponse
 from main.models import Product, ProductType, Page
 
 
+def main(request):
+    return HttpResponse("main page")
+
+
 def index(request):
     url = request.path[1:]
     page = Page.objects.filter(slug=url).first()
@@ -17,5 +21,5 @@ def index(request):
 # возвращает отрендеренную страницу
 def get_page(request, header, types):
     # header + main + footer
-
-    return HttpResponse(str([str(i) for i in types]))
+    data = {"header": header, "types": types}
+    return render(request, "body.html", context=data)

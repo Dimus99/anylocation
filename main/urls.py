@@ -20,5 +20,5 @@ urlpatterns = [
     path('octoberfest', views.index),
     path('rozhdestvenskie-yarmarki', views.index),
     path('ZOZH', views.index),
-    path('', views.index),
+    path('', views.main),
 ]
