@@ -25,7 +25,7 @@ class ProductType(models.Model):
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    cost = models.IntegerField()
+    cost = models.CharField(max_length=50, null=True)
     img = models.ImageField()
     additional_img = models.ImageField(blank=True, null=True)
     description = models.CharField(max_length=1023, default="")
