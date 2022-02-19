@@ -5,12 +5,31 @@
     <title>Anylocation</title>
 </head>
 <body>
-<!-- TODO: header -->
+<!-- TODO: header подключить зная {{ header }} -->
 
 {% for type in types %}
-    <p>
-        {{ type }}
-    </p>
+    <div style="width: 30%">
+        <h2>{{ type.name }}</h2>
+        {% if type.description %}
+            <div>{{ type.description }}</div>
+        {% endif %}
+
+        <!-- Products, надо до 3-ех в ряд -->
+        {% for product in type.products %}
+            <div>
+                {{ product.img }}
+                {{ product.name }}
+
+                {{ product.price }}
+                <!-- далее если открыть товар-->
+{#                <div>#}
+{#                    <!--TODO: выпадающий список-->#}
+{#                    {{ product.variants }}#}
+{#                </div>#}
+            </div>
+        {% endfor %}
+
+    </div>
 {% endfor %}
 
 
